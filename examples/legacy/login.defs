@@ -1,0 +1,8 @@
+# Old server. Synthetic example.
+PASS_MAX_DAYS   99999
+PASS_MIN_DAYS   0
+PASS_WARN_AGE   5
+ENCRYPT_METHOD  MD5
+UMASK           022
+LOGIN_RETRIES   10
+garbage

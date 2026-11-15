@@ -1,0 +1,7 @@
+# Hardened login.defs. Synthetic example.
+PASS_MAX_DAYS   90
+PASS_MIN_DAYS   1
+PASS_WARN_AGE   14
+ENCRYPT_METHOD  SHA512
+UMASK           027
+LOGIN_RETRIES   3

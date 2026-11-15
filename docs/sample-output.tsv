@@ -1,0 +1,12 @@
+# 4 files, 11 findings
+high	LGN004	legacy/login.defs:5	ENCRYPT_METHOD MD5: new password hashes are weak
+medium	LGN001	legacy/login.defs:2	PASS_MAX_DAYS is 99999: passwords live longer than a year
+medium	LGN005	legacy/login.defs:6	UMASK 022 leaves new files readable by other users: use 027 or stricter
+medium	LGN008	legacy/pwquality.conf.d/local.conf:1	no complexity rule: set minclass to 3 or more, or negative dcredit, ucredit, lcredit and ocredit
+medium	LGN007	legacy/pwquality.conf.d/local.conf:2	minlen is 8: use at least 12
+medium	LGN009	legacy/pwquality.conf.d/local.conf:3	dictcheck = 0: dictionary words are accepted
+medium	LGN010	legacy/pwquality.conf.d/local.conf:4	enforcing = 0: weak passwords only produce a warning
+low	LGN002	legacy/login.defs:3	PASS_MIN_DAYS is 0: a user can change a password straight back
+low	LGN003	legacy/login.defs:4	PASS_WARN_AGE is 5: users get under a week of notice
+low	LGN006	legacy/login.defs:7	LOGIN_RETRIES is 10: allow 5 at most
+info	LGN000	legacy/login.defs:8	not a setting, ignored: garbage

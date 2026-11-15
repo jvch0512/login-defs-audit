@@ -1,0 +1,4 @@
+#!/bin/sh
+# Launcher: runs the Guile program.
+dir=$(cd "$(dirname "$0")/.." && pwd)
+exec guile --no-auto-compile -L "$dir/src" -s "$dir/src/main.scm" "$@"
