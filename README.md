@@ -2,6 +2,8 @@
 
 login-defs-audit reads the two files that set a Linux host's password and account policy, `/etc/login.defs` and `pwquality.conf` (with its `pwquality.conf.d` drop-ins), and checks them against the usual benchmark values: password lifetime and warning, the hashing method for new passwords, the default `umask`, login retries, minimum length, character classes, dictionary checks and whether the rules are enforced at all.
 
+![Terminal demo of login-defs-audit on its sample data](docs/demo.svg)
+
 **Live demo:** https://jvch0512.github.io/login-defs-audit/ (Synthetic policy files.)
 
 GNU Guile 3 (Scheme), standard modules only. The demo page is rendered from the tool's `--tsv` output by `scripts/site.py` (Python 3, only needed to regenerate the page).
@@ -50,3 +52,13 @@ make test    # 69 checks, incl. 3000-case fuzzing and CLI exit codes
 ```
 
 MIT.
+
+## Code scanning (SARIF)
+
+`scripts/tsv2sarif.py` converts the `--tsv` output into SARIF 2.1.0, so findings show up in GitHub code scanning:
+
+```sh
+bin/login-defs-audit examples --tsv 2>/dev/null | python3 scripts/tsv2sarif.py --tool login-defs-audit --prefix examples > results.sarif
+```
+
+Upload `results.sarif` with `github/codeql-action/upload-sarif`. Severities map to SARIF levels (critical and high to error, medium to warning, low and info to note) and to a `security-severity` score.
